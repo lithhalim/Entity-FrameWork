@@ -1,7 +1,7 @@
 # Entity-Framework
 ## Custmize Table Section
 ``` c#
-//Use To Add Specific Name Table
+Use To Add Specific Name Table
 [Table("productCollections")]
 
 Exclude Table Not Added To Database
