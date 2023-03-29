@@ -1,21 +1,15 @@
 # Entity-Framework
-## Change Table Name 
+## Custmize Table Section
 ``` c#
+//Use To Add Specific Name Table
 [Table("productCollections")]
+
+Exclude Table Not Added To Database
+[NotMapped]
 public class Product
 {
     public int Id { get; set; }
     public string Name { get; set; }
-}
-```
-
-## Exclude The Table Dont Added To Database
-``` c#
-[NotMapped]
-public class Orders
-{
-    public int OrderId { get; set; }
-    public string OrderName { get; set; }
 }
 ```
 
