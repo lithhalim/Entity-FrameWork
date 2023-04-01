@@ -43,30 +43,54 @@ public class Order
 }
 ```
 
-# Select
+### Select
 ``` c# 
 var SelectAll = await _context.TableName.ToListAsync();
 var SelectSpecific = await _context.TableName.Select(a => new {name=a.Name,discription=a.Description}).ToListAsync();
 ```
-# Where Cluse
+### Where Cluse
 ``` c#
 var Select = await _context.TableName.Where(a => a.Name == "khalid" ).ToListAsync();
 ```
-# Delete Row
+### Delete Row
 ``` c# 
      var items = _context.TableName.Find(IdElement);
      _context.TableName.Remove(items);
      _context.SaveChanges();
 ```
 
-# Update Row
+### Update Row
 ``` c#
      var items = _context.TableName.Find(IdElement);
      items.name="salma";
      _context.SaveChanges();
 ```
-# Order By (Sort)
+### Order By (Sort)
 ``` c#
+  var Order = await _context.TableName.OrderBy(b=>b.Name).ToListAsync();
+  var Order = await _context.TableName.OrderByDescending(b=>b.Name).ToListAsync();
+```
+
+### Like (Searching)
+``` c#
+  var Like = await _context.TableName.Where(e => EF.Functions.Like(e.ColumnName, "%searchTerm%"));
+```
+### Not Like
+``` c#
+  var Like = await _context.TableName.Where(e => !EF.Functions.Like(e.ColumnName, "%searchTerm%"));
+```
+
+### Joint 
+``` c#
+    var joinResults = context.Table1
+        .Join(context.Table2,
+            t1 => t1.KeyColumn,
+            t2 => t2.ForeignKeyColumn,
+            (t1, t2) => new { Table1 = t1, Table2 = t2 });
+```
+### using sql with return data
+``` c#
+  var Like = await _context.SqlQuery<YourEntityType>("sql query");
 
 ```
 
