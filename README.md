@@ -40,8 +40,33 @@ public class Order
     //Add Macimum Length 
     [StringLength(50)]
     public string Email { get; set; }
-    
-
-
 }
 ```
+
+# Select
+``` c# 
+var SelectAll = await _context.TableName.ToListAsync();
+var SelectSpecific = await _context.TableName.Select(a => new {name=a.Name,discription=a.Description}).ToListAsync();
+```
+# Where Cluse
+``` c#
+var Select = await _context.TableName.Where(a => a.Name == "khalid" ).ToListAsync();
+```
+# Delete Row
+``` c# 
+     var items = _context.TableName.Find(IdElement);
+     _context.TableName.Remove(items);
+     _context.SaveChanges();
+```
+
+# Update Row
+``` c#
+     var items = _context.TableName.Find(IdElement);
+     items.name="salma";
+     _context.SaveChanges();
+```
+# Order By (Sort)
+``` c#
+
+```
+
